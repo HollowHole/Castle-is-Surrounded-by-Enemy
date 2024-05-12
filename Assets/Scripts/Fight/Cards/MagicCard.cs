@@ -34,7 +34,7 @@ public class MagicCard : Card
     //协程获取下次鼠标点击的位置
     public override IEnumerator GetNextClickPos()
     {
-        while (true)
+        while (preview != null)
         {
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = 10;
@@ -53,12 +53,12 @@ public class MagicCard : Card
                 {
                     if (h.collider.CompareTag("Map"))
                     {
-                         //Debug.Log("有效点击");
+                         Debug.Log("有效点击");
                         UseAction(screenPos);
                         yield break;
                     }
                 }
-                //Debug.Log("无效点击");
+                Debug.Log("无效点击");
                 
             }
             yield return null;
